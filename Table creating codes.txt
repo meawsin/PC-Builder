@@ -1,0 +1,249 @@
+CREATE TABLE User (
+    U_ID VARCHAR(5) PRIMARY KEY,
+    Name VARCHAR(50) UNIQUE,
+    Email VARCHAR(50),
+    Phone_Number VARCHAR(15),
+    Address VARCHAR(100),
+    Password VARCHAR(20)
+);
+
+ CREATE TABLE Admin (
+    A_ID VARCHAR(5) PRIMARY KEY,
+    Name VARCHAR(50),
+    Email VARCHAR(50),
+    Password VARCHAR(20)
+);
+
+CREATE TABLE CPU (
+    Comp_ID VARCHAR(10) Primary key,
+    Generation VARCHAR(20),
+    Brand VARCHAR(20),
+    Model VARCHAR(20),
+    Price INT,
+    Watt VARCHAT(10)
+);
+
+CREATE TABLE Motherboard (
+    Comp_ID VARCHAR(10) PRIMARY KEY,
+    Brand VARCHAR(20),
+    Model VARCHAR(50),
+    Type VARCHAR(10),
+    Form_Factor VARCHAR(20),
+    RAM_slot INT,
+    Storage_slot INT,
+    Watt VARCHAR(10),
+    Price INT,
+    Supported_CPU_gen VARCHAR(20)
+);
+
+CREATE TABLE RAM (
+    Comp_ID VARCHAR(10) PRIMARY KEY,
+    Brand VARCHAR(20),
+    Model VARCHAR(50),
+    Type VARCHAR(10),
+    Memory VARCHAR(20),
+    Watt INT,
+    Price INT
+);
+
+CREATE TABLE Storage (
+    Comp_ID VARCHAR(10) PRIMARY KEY,
+    Type VARCHAR(10),
+    Brand VARCHAR(20),
+    Model VARCHAR(50),
+    Storage VARCHAR(20),
+    Watt INT,
+    Price INT
+);
+
+CREATE TABLE Power_Supply (
+    Comp_ID VARCHAR(10) PRIMARY KEY,
+    Brand VARCHAR(20),
+    Model VARCHAR(50),
+    Rating VARCHAR(20),
+    Max_power VARCHAR(20),
+    Price INT
+);
+
+CREATE TABLE Graphics_Card (
+    Comp_ID VARCHAR(10) PRIMARY KEY,
+    Brand VARCHAR(20),
+    Type VARCHAR(10),
+    Model VARCHAR(50),
+    Memory VARCHAR(20),
+    Watt INT,
+    Price INT
+);
+
+CREATE TABLE Casing (
+    Comp_ID VARCHAR(10) PRIMARY KEY,
+    Brand VARCHAR(20),
+    Model VARCHAR(50),
+    Formfactor VARCHAR(20),
+    RGB VARCHAR(3),
+    Extra_Fans INT,
+    Price INT
+);
+
+CREATE TABLE messages (
+    Message_ID INT AUTO_INCREMENT PRIMARY KEY,
+    User_ID VARCHAR(5) NOT NULL,
+    Admin_ID VARCHAR(5),
+    Message TEXT NOT NULL,
+    Response TEXT,
+    Created_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (User_ID) REFERENCES user(U_ID),
+    FOREIGN KEY (Admin_ID) REFERENCES admin(A_ID)
+);
+
+
+CREATE TABLE builds (
+    Build_ID INT AUTO_INCREMENT PRIMARY KEY,
+    User_ID VARCHAR(5)  NOT NULL,
+    CPU_ID VARCHAR(10) NOT NULL,
+    Motherboard_ID VARCHAR(10) NOT NULL,
+    RAM_ID VARCHAR(10) NOT NULL,
+    Storage_ID VARCHAR(10) NOT NULL,
+    Graphics_Card_ID VARCHAR(10) NOT NULL,
+    PSU_ID VARCHAR(10) NOT NULL,
+    Casing_ID VARCHAR(10) NOT NULL,
+    Build_Number VARCHAR(10) NOT NULL,
+    Estimated_Price INT,
+    Build_Date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (User_ID) REFERENCES user(U_ID),
+    FOREIGN KEY (CPU_ID) REFERENCES CPU(Comp_ID),
+    FOREIGN KEY (Motherboard_ID) REFERENCES Motherboard(Comp_ID),
+    FOREIGN KEY (RAM_ID) REFERENCES RAM(Comp_ID),
+    FOREIGN KEY (Storage_ID) REFERENCES Storage(Comp_ID),
+    FOREIGN KEY (Graphics_Card_ID) REFERENCES Graphics_card(Comp_ID),
+    FOREIGN KEY (PSU_ID) REFERENCES power_supply(Comp_ID),
+    FOREIGN KEY (Casing_ID) REFERENCES Casing(Comp_ID)
+);
+
+
+CREATE TABLE Orders (
+    Order_ID INT AUTO_INCREMENT PRIMARY KEY,
+    U_ID VARCHAR(5),
+    Build_ID INT,,
+    Price INT,
+    Status VARCHAR(20) DEFAULT 'pending',
+    FOREIGN KEY (U_ID) REFERENCES user(U_ID),
+    FOREIGN KEY (Build_ID) REFERENCES builds(Build_ID)
+);
+
+
+CREATE TABLE promotions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image_url VARCHAR(255) NOT NULL,
+    expiration_date DATETIME NOT NULL
+);
+
+
+
+
+
+
+INSERT INTO Casing (Comp_ID, Brand, Model, Formfactor, RGB, Extra_Fans, Price) 
+VALUES 
+    ('Casing001', 'Xtreme', '951', 'Micro ATX', 'No', 2, 1500),
+    ('Casing002', 'LIAN', 'STRIMER L-Connect', 'Micro ATX', 'Yes', 3, 1850),
+    ('Casing003', 'OVO', 'J-618 W', 'mATX Form Factor', 'Yes', 2, 1600),
+    ('Casing004', 'Revenger', 'ECO 200', 'Micro ATX', 'No', 4, 2300),
+    ('Casing005', 'Xtreme', 'V3', 'mATX Form Factor', 'Yes', 3, 2500);
+INSERT INTO Casing (Comp_ID, Brand, Model, Formfactor, RGB, Extra_Fans, Price) VALUES
+    ('Casing006', 'NZXT', 'H510 Elite', 'ATX', 'Yes', 2, 8000),
+    ('Casing007', 'Corsair', 'iCUE 4000X', 'ATX', 'Yes', 3, 9500),
+    ('Casing008', 'Cooler Master', 'MasterBox Q300L', 'Micro ATX', 'No', 1, 4000),
+    ('Casing009', 'Phanteks', 'Eclipse P400A', 'ATX', 'Yes', 2, 7500),
+    ('Casing010', 'Thermaltake', 'Core P3', 'ATX', 'Yes', 3, 10500);
+
+
+INSERT INTO Graphics_Card (Comp_ID, Brand, Type, Model, Memory, Watt, Price) 
+VALUES 
+    ('GTX001', 'Asus', 'DDR4', 'Geforce GT 1030', '2GB', 200, 10200),
+    ('GTX002', 'MSI', 'DDR4', 'GT710', '2GB', 200, 7500),
+    ('GTX003', 'Gigabyte', 'DDR4', 'G-Force', '2GB', 200, 8000),
+    ('GTX004', 'Zotac', 'DDR6', 'RTX-4060', '8GB', 300, 42900),
+    ('GTX005', 'Yeston', 'DDR6', 'RTX-3060', '8GB', 300, 37900);
+INSERT INTO Graphics_Card (Comp_ID, Brand, Type, Model, Memory, Watt, Price) VALUES
+    ('GTX006', 'AMD', 'GDDR6', 'Radeon RX 6800', '16GB', 250, 48000),
+    ('GTX007', 'MSI', 'GDDR5', 'Radeon RX 570', '8GB', 180, 28000),
+    ('GTX008', 'Gigabyte', 'GDDR6', 'GeForce RTX 3060', '12GB', 220, 52000),
+    ('GTX009', 'Zotac', 'GDDR5', 'GeForce GTX 1660', '6GB', 150, 22000),
+    ('GTX010', 'Asus', 'GDDR6', 'GeForce RTX 3090', '24GB', 350, 100000);
+
+INSERT INTO Storage (Comp_ID, Type, Brand, Model, Storage, Watt, Price) 
+VALUES 
+    ('STO001', 'HDD', 'Seagate', 'Barracuda', '4TB', 9, 5500),
+    ('STO002', 'SSD', 'Samsung', '970 EVO Plus', '500GB', 15, 7800),
+    ('STO003', 'SSD', 'Transcend', '110s', '128GB', 3, 2700),
+    ('STO004', 'SSD', 'Team', 'CX-2', '512GB', 12, 4790),
+    ('STO005', 'HDD', 'Seagate', 'shywake', '4TB', 15, 14200);
+INSERT INTO Storage (Comp_ID, Type, Brand, Model, Storage, Watt, Price) VALUES
+    ('STO006', 'SSD', 'Kingston', 'A2000', '1TB', 15, 9500),
+    ('STO007', 'SSD', 'Crucial', 'MX500', '500GB', 10, 6000),
+    ('STO008', 'HDD', 'WD', 'Blue', '2TB', 7, 4500),
+    ('STO009', 'SSD', 'Intel', '660p', '512GB', 12, 7000),
+    ('STO010', 'HDD', 'Toshiba', 'P300', '1TB', 5, 3500);
+
+INSERT INTO Power_Supply (Comp_ID, Brand, Model, Rating, Max_power, Price) 
+VALUES 
+    ('PS001', 'Thermaltake', 'Smart BX1', '80+ Gold', '650W', 5500),
+    ('PS002', 'MSI', 'MAG A850GL', '80+ Gold', '850W', 14500),
+    ('PS003', 'Corsair', 'CV650', '80+ Bronze', '650 Watt', 6800),
+    ('PS004', 'Lian Li', 'SP850', '80+ Gold', '750W', 16200),
+    ('PS005', 'ASUS', 'TUF Gaming 1200G', '80+ Gold', '1200W', 32200),
+    ('PS006', 'Value Top', 'S200B ', 'N/A', '200W', 1150);
+INSERT INTO Power_Supply (Comp_ID, Brand, Model, Rating, Max_power, Price) VALUES
+    ('PS011', 'EVGA', 'SuperNOVA 650 G5', '80+ Gold', '650W', 8500),
+    ('PS007', 'Cooler Master', 'MWE Gold 750', '80+ Gold', '750W', 9500),
+    ('PS008', 'Seasonic', 'Focus GX-850', '80+ Gold', '850W', 12500),
+    ('PS009', 'Be Quiet!', 'Straight Power 11', '80+ Platinum', '750W', 15000),
+    ('PS010', 'Corsair', 'RM1000x', '80+ Gold', '1000W', 18000);
+
+
+INSERT INTO RAM (Comp_ID, Brand, Model, Type, Memory, Watt, Price) 
+VALUES 
+    ('RAM001', 'TEAM', 'DeltaRGB White', 'DDR5', '16 GB', 10, 8500),
+    ('RAM002', 'G.SKILL', 'Value', 'DDR3', '4GB', 5, 1500),
+    ('RAM003', 'TwinMOS', 'U-DIMM', 'DDR4', '8GB', 8, 3000),
+    ('RAM004', 'G.SKILL', 'Aieges', 'DDR4', '8GB', 8, 3200),
+    ('RAM005', 'Corsair', 'Vengeance', 'DDR4', '16GB', 10, 6000);
+INSERT INTO RAM (Comp_ID, Brand, Model, Type, Memory, Watt, Price) VALUES
+    ('RAM006', 'Crucial', 'Ballistix', 'DDR4', '16GB', 10, 7000),
+    ('RAM007', 'Kingston', 'Fury Beast', 'DDR5', '32GB', 15, 12000),
+    ('RAM008', 'ADATA', 'XPG Spectrix D50', 'DDR4', '16GB', 10, 8000),
+    ('RAM009', 'HyperX', 'Predator', 'DDR4', '8GB', 8, 4000),
+    ('RAM010', 'Corsair', 'Vengeance LPX', 'DDR4', '32GB', 15, 14000);
+
+INSERT INTO Motherboard (Comp_ID, Brand, Model, Type, Form_Factor, RAM_slot, Storage_slot, Watt, Price, Supported_CPU_gen) 
+VALUES 
+    ('Mobo001', 'Asus', 'ROG Z790-A', 'DDR', 'Micro ATX', 4, 4, '50w', 12000, '14th gen'),
+    ('Mobo002', 'Intel', 'H510M-A PRO', 'DDR4', 'mATX Form Factor', 4, 2, '50w', 9499, '11th Gen'),
+    ('Mobo003', 'MSI', 'B450M', 'DDR3', 'Micro ATX', 4, 2, '50w', 8300, '13th Gen'),
+    ('Mobo004', 'Gigabyte', 'A550M', 'DDR4', 'mATX Form Factor', 4, 2, '50w', 8499, '5600G'),
+    ('Mobo005', 'Biostar', 'B550mxc', 'DDR5', 'Micro ATX', 4, 2, '50w', 11000, '7400G');
+INSERT INTO Motherboard (Comp_ID, Brand, Model, Type, Form_Factor, RAM_slot, Storage_slot, Watt, Price, Supported_CPU_gen) VALUES
+    ('MOBO011', 'ASRock', 'B460M Pro4', 'DDR4', 'Micro ATX', 4, 2, '50w', 7500, '10th Gen'),
+    ('MOBO007', 'MSI', 'Z490-A PRO', 'DDR4', 'ATX', 4, 2, '70w', 13000, '10th Gen'),
+    ('MOBO008', 'Gigabyte', 'Z590 UD AC', 'DDR4', 'ATX', 4, 3, '70w', 14000, '11th Gen'),
+    ('MOBO009', 'ASRock', 'B550 Phantom Gaming', 'DDR4', 'ATX', 4, 2, '60w', 12500, '5600G'),
+    ('MOBO010', 'MSI', 'MEG X570 ACE', 'DDR4', 'ATX', 4, 3, '80w', 16000, '7400G');
+
+
+INSERT INTO CPU (Comp_ID, Generation, Brand, Model, Price, Watt) 
+VALUES 
+    ('CPU001', '14th Gen', 'Intel', 'Core i5', 35000, '90w'),
+    ('CPU002', '13th Gen', 'Intel', 'Core i5', 35000, '90w'),
+    ('CPU003', '11th Gen', 'Intel', 'Core i5', 20000, '90w'),
+    ('CPU004', '5600G', 'Ryzen', 'Ryzen 5', 15000, '90w'),
+    ('CPU005', '7400G', 'Ryzen', 'Ryzen 7', 21000, '90w');
+INSERT INTO CPU (Comp_ID, Generation, Brand, Model, Price, Watt) VALUES
+    ('CPU011', '14th Gen', 'Intel', 'Core i7', 45000, '125w'),
+    ('CPU007', '13th Gen', 'Intel', 'Core i3', 25000, '65w'),
+    ('CPU008', '12th Gen', 'Intel', 'Core i9', 60000, '95w'),
+    ('CPU009', '5900X', 'Ryzen', 'Ryzen 9', 55000, '105w'),
+    ('CPU010', '3600', 'Ryzen', 'Ryzen 5', 18000, '65w');
+
+
+
