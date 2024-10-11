@@ -22,7 +22,3 @@ A web-based application for building and comparing PC configurations
 
 ## Usage
 Visit the homepage to start building your PC configuration.
-
-## Screenshots
-![Home Page](screenshots/homepage.png)
-![Build Page](screenshots/buildpage.png)
