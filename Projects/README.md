@@ -1,87 +1,87 @@
-# 🖥️ Custom PC Builder & Management System
+# Custom PC Builder & Management System
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
 [![MySQL Database](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![Apache / XAMPP](https://img.shields.io/badge/XAMPP-Supported-FB7A24?style=for-the-badge&logo=xampp&logoColor=white)](https://www.apachefriends.org/)
-[![Database Management System](https://img.shields.io/badge/DBMS-Project-brightgreen?style=for-the-badge&logo=database)](https://github.com/meawsin/PC-Builder)
+[![Database Management System](https://img.shields.io/badge/DBMS-Project-brightgreen?style=for-the-badge)](https://github.com/meawsin/PC-Builder)
 
-A comprehensive, full-stack web application designed for custom PC configuration, hardware compatibility verification, side-by-side component comparison, order fulfillment, and administrative DBMS analytics. Built with **PHP** and **MySQL** as an academic **Database Management System (DBMS)** project.
+A full-stack web application designed for custom PC configuration, hardware compatibility validation, side-by-side component comparison, order fulfillment, and administrative DBMS analytics. Developed with PHP and MySQL as a Database Management System (DBMS) project.
 
 ---
 
-## 📸 Visual Showcase & Feature Walkthrough
+## Visual Overview and Feature Walkthrough
 
-### 1. Customer Experience
+### 1. Customer Portal
 
-#### 🏠 Homepage with Active Promotions & Dynamic Countdown
-Features live promotional offers with real-time countdown timers and direct access to builder modules.
+#### Homepage with Active Promotions and Dynamic Countdown
+Displays current promotional offerings with real-time countdown timers and direct navigation to all system modules.
 ![Home Page](./screenshots/01_home_page.png)
 
-#### 🔐 User Authentication Portal
-Secure access portal supporting role-based authentication for regular users and administrators.
+#### User Authentication Portal
+Access portal supporting role-based authentication for regular users and administrators.
 ![Login](./screenshots/02_user_login.png)
 
-#### ⚙️ Step-by-Step PC Configuration Engine
+#### Step-by-Step PC Configuration Engine
 Dynamic component selection engine that computes real-time system wattage and estimated prices while applying hardware compatibility rules (CPU socket generation, Motherboard RAM support, PSU power headroom, and Casing form factors).
 ![PC Builder](./screenshots/03_pc_builder.png)
 
-#### 📋 User Builds Dashboard
-Users can review their configured PC builds, view detailed specs of all 7 core components, and place direct purchase orders.
+#### User Builds Dashboard
+Allows users to review saved configurations, examine detailed specifications of all selected components, and place purchase orders.
 ![My Builds](./screenshots/04_my_builds.png)
 
-#### 📦 Order Tracking & Status
-Real-time tracking of placed orders showing build numbers, status updates (*Pending*, *Processing*, *Shipped*, *Delivered*), and invoice links.
+#### Order Tracking and Status
+Order monitoring interface displaying build numbers, order status updates (Pending, Processing, Shipped, Delivered), and invoice access links.
 ![Order Status](./screenshots/05_order_status.png)
 
-#### 🧾 Itemized Order Invoice & Build Sheet
-Print-ready build breakdown detailing unit prices, customer contact information, and total order cost.
+#### Itemized Order Invoice and Build Sheet
+Print-ready invoice providing an itemized breakdown of component pricing, customer contact information, and total order costs.
 ![Order Invoice](./screenshots/06_order_invoice.png)
 
-#### 🔍 Hardware Component Catalog & Search
-Search and browse through processors, graphics cards, motherboards, storage, RAM, power supplies, and casings with live specifications.
+#### Hardware Component Catalog and Search
+Search and browse processors, graphics cards, motherboards, storage, memory, power supplies, and casings with detailed specifications.
 ![Component Catalog](./screenshots/07_component_catalog.png)
 
-#### ⚖️ Side-by-Side Product Comparison
-Directly compare any two hardware components across specifications (clock, memory, TDP wattage, form factor, and price) within any category.
+#### Side-by-Side Product Comparison
+Enables comparative analysis of any two hardware components across specifications (clock, memory, TDP wattage, form factor, and price) within any category.
 ![Product Comparison](./screenshots/08_product_comparison.png)
 
-#### 💬 Technical Inquiry & Expert Consultation
-Direct chat interface allowing customers to consult technical experts regarding build compatibility and custom requests.
+#### Technical Inquiry and Consultation
+Direct consultation interface allowing customers to submit technical inquiries to administrators regarding build compatibility and custom requests.
 ![Ask Expert](./screenshots/09_ask_expert.png)
 
 ---
 
 ### 2. Administrative Control & DBMS Insights
 
-#### 🎛️ Admin Control Center
+#### Admin Control Center
 Central management dashboard for hardware catalog updates, order processing, and system oversight.
 ![Admin Dashboard](./screenshots/10_admin_dashboard.png)
 
-#### 📊 DBMS Insights & Aggregated Business Analytics
-Built-in business intelligence interface powered by SQL relational aggregate queries (`COUNT`, `SUM`, `AVG`, `GROUP BY`) displaying user growth, total revenue, average build values, order distribution, and most popular hardware components.
+#### DBMS Insights and Aggregated Business Analytics
+Business intelligence interface powered by SQL relational aggregate queries (`COUNT`, `SUM`, `AVG`, `GROUP BY`) displaying user growth, total revenue, average build values, order distribution, and most popular hardware components.
 ![DBMS Analytics](./screenshots/11_dbms_analytics.png)
 
-#### 🚚 Order Fulfillment Manager
-Interactive order lifecycle manager enabling administrators to update customer order statuses and inspect custom configuration specifications.
+#### Order Fulfillment Manager
+Order lifecycle management interface enabling administrators to update order statuses and inspect custom configuration specifications.
 ![Manage Orders](./screenshots/12_manage_orders.png)
 
-#### 📦 Hardware Inventory CRUD Portal
-Product management portal allowing admins to add new hardware models, modify existing pricing and specs, or remove discontinued components across 7 hardware categories.
+#### Hardware Inventory Management
+Product management portal allowing administrators to add new hardware models, modify existing pricing and specs, or remove discontinued components across all hardware categories.
 ![Manage Products](./screenshots/13_manage_products.png)
 
-#### 👥 User Account Management
-Complete customer roster view showing user IDs, contact records, delivery addresses, and associated order history.
+#### User Account Management
+Customer roster interface showing user IDs, contact records, delivery addresses, and associated order history.
 ![Manage Users](./screenshots/14_manage_users.png)
 
-#### ✉️ Customer Inquiry & Support Desk
-Dedicated inquiry response portal for administrators to answer technical questions asked by customers.
+#### Customer Inquiry and Support Desk
+Dedicated inquiry response portal for administrators to answer technical questions submitted by customers.
 ![Admin Support](./screenshots/15_admin_responses.png)
 
 ---
 
-## 🗄️ Database Architecture & Relational Schema
+## Database Architecture and Relational Schema
 
-The underlying database `projectdemo1` consists of **13 relational tables** with enforced foreign key constraints:
+The underlying database `projectdemo1` consists of 13 relational tables with enforced foreign key constraints:
 
 ```mermaid
 erDiagram
@@ -156,11 +156,11 @@ erDiagram
 ### Relational Schema Highlights:
 - **Foreign Keys**: `builds` links to all 7 hardware component tables (`CPU`, `Motherboard`, `RAM`, `Storage`, `Graphics_Card`, `Power_Supply`, `Casing`) alongside `User`.
 - **Integrity**: `orders` connects back to `User` and `builds` to guarantee pricing and build history immutability.
-- **Aggregation**: Comprehensive analytical queries power the administrator analytics dashboard.
+- **Aggregation**: Multi-table analytical queries power the administrator analytics dashboard.
 
 ---
 
-## 🚀 Quick Start & Setup Guide
+## Getting Started and Installation
 
 ### 1. Prerequisites
 - **PHP**: 8.0 or newer
@@ -168,7 +168,7 @@ erDiagram
 - **Web Server**: Apache (via XAMPP) or PHP Built-in Server
 
 ### 2. Database Initialization
-1. Start your MySQL service.
+1. Start the MySQL service.
 2. Create the database and import schema & seed data:
 ```bash
 mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS ProjectDemo1;"
@@ -187,24 +187,24 @@ $database = "ProjectDemo1";
 
 ### 4. Running the Application
 
-#### Option A: PHP Built-in Server (Recommended for quick testing)
-```powershell
-cd "D:\Projects\PC Builder\Projects"
+#### Option A: PHP Built-in Server
+```bash
+cd Projects
 php -S localhost:8080
 ```
-Then open: [http://localhost:8080/index.php](http://localhost:8080/index.php)
+Open in browser: [http://localhost:8080/index.php](http://localhost:8080/index.php)
 
 #### Option B: XAMPP / Apache
-1. Copy or symlink the `Projects` directory to your XAMPP web root:
-   `C:\xampp\htdocs\Projects`
+1. Place or symlink the `Projects` directory inside your XAMPP web root:
+   `C:/xampp/htdocs/Projects`
 2. Start Apache and MySQL from the XAMPP Control Panel.
-3. Open in your browser: [http://localhost/Projects/index.php](http://localhost/Projects/index.php)
+3. Open in browser: [http://localhost/Projects/index.php](http://localhost/Projects/index.php)
 
 ---
 
-## 🔑 Test Credentials
+## Test Credentials
 
-| Role | Username | Password | Notes |
+| Role | Username | Password | Description |
 | :--- | :--- | :--- | :--- |
 | **Customer** | `Mohsin` | `mohsin` | User account with pre-configured custom builds & orders |
 | **Customer** | `Sarah Jenkins` | `sarah123` | Customer with budget AMD build & delivered order |
@@ -214,7 +214,7 @@ Then open: [http://localhost:8080/index.php](http://localhost:8080/index.php)
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 PC Builder/
@@ -222,7 +222,7 @@ PC Builder/
 │   ├── index.php                   # Homepage with promotions & countdown timer
 │   ├── building.php                # PC Builder component selection engine
 │   ├── compare.php                 # Side-by-side component comparison
-│   ├── components.php              # Hardware component catalog (141 components)
+│   ├── components.php              # Hardware component catalog
 │   ├── mybuilds.php                # User's saved builds & order placement
 │   ├── orderStatus.php             # Order tracking view
 │   ├── printbuild.php              # Itemized build print / invoice sheet
@@ -241,39 +241,20 @@ PC Builder/
 │   ├── connection.php              # Database connection configuration
 │   ├── header.php                  # Universal navigation bar & session state
 │   ├── Table creating codes.txt    # Base DDL & 141 component seed script
-│   └── uploads/                    # Uploaded promotional banners & assets
-├── screenshots/                    # High-resolution screenshots for showcase & portfolio
-│   ├── 01_home_page.png
-│   ├── 02_user_login.png
-│   ├── 03_pc_builder.png
-│   ├── 04_my_builds.png
-│   ├── 05_order_status.png
-│   ├── 06_order_invoice.png
-│   ├── 07_component_catalog.png
-│   ├── 08_product_comparison.png
-│   ├── 09_ask_expert.png
-│   ├── 10_admin_dashboard.png
-│   ├── 11_dbms_analytics.png
-│   ├── 12_manage_orders.png
-│   ├── 13_manage_products.png
-│   ├── 14_manage_users.png
-│   └── 15_admin_responses.png
+│   └── uploads/                    # Promotional banners and assets
+├── screenshots/                    # High-resolution screenshots for documentation
 ├── add_more_components.sql         # Expansion SQL adding 70 modern components
-├── seed_demo_data.sql              # Additional users, builds, orders & messages
+├── seed_demo_data.sql              # Seed data for users, builds, orders & messages
 ├── capture_all_screenshots.py      # Automated Selenium script to capture all views
 ├── capture_admin_screenshots.py    # Dedicated admin screenshot automation
-└── README.md                       # Complete documentation & portfolio showcase
+└── README.md                       # System documentation
 ```
 
 ---
 
-## 💼 Portfolio Highlights & Assets
+## Key Technical Highlights
 
-For quick reference in your personal portfolio or presentation slides, all high-resolution PNG screenshots are located in:
-`D:\Projects\PC Builder\screenshots\`
-
-### Key Showcase Points:
-- **Relational Integrity**: Enforced foreign keys across 8 interrelated tables.
-- **Dynamic Compatibility Rules**: Filters motherboards by CPU generation, RAM by DDR standard, and casings by form factor.
-- **Aggregated Analytics**: Live business intelligence calculating total system revenue, popular parts, and order fulfillment breakdown using SQL `JOIN` and `GROUP BY`.
-- **E-Commerce Lifecycle**: From initial component selection to order placement, status tracking, and printable customer invoice generation.
+- **Relational Integrity**: Enforced foreign key constraints across 8 interrelated entities (`User`, `Admin`, `Builds`, `Orders`, `Messages`, and hardware tables).
+- **Dynamic Compatibility Engine**: Automated hardware validation enforcing socket generation matching, memory standards (DDR4/DDR5), thermal/wattage headroom calculations, and physical chassis form factor constraints.
+- **SQL Aggregations and Analytics**: Real-time administrative reporting engine utilizing SQL multi-table joins, subqueries, and `GROUP BY` aggregation for order tracking, inventory status, and revenue calculation.
+- **Transactional Workflow**: End-to-end e-commerce flow covering component selection, build saving, order placement, lifecycle management, and printable invoice generation.
