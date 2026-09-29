@@ -1,0 +1,13 @@
+# Environment and runtime
+*.log
+cookie*.txt
+__pycache__/
+*.pyc
+
+# Temporary test images
+*test*.png
+
+# OS metadata
+Thumbs.db
+Desktop.ini
+.DS_Store
